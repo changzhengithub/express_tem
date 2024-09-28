@@ -1,0 +1,33 @@
+<!-- 公共布局模板 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 标题插槽 -->
+    <title>{{block 'title'}}默认标题{{/block}}</title>
+    <link rel="stylesheet" href="/public/css/reset.css" />
+    <link rel="stylesheet" href="/public/lib/css/bootstrap.css" />
+    <!-- 头部插槽 -->
+    {{block 'head'}}{{/block}}
+  </head>
+  <body>
+    <div class="index">
+      <!-- 头部 -->
+      {{include '../_partials/header.html'}}
+      
+      <!-- 内容插槽 -->
+      {{block 'container'}}{{/block}}
+      
+      <!-- 底部 -->
+      {{include '../_partials/footer.html'}}
+    </div>
+    
+    <script src="/public/lib/js/jquery.js"></script>
+    <script src="/public/lib/js/bootstrap.js"></script>
+
+    <!-- js插槽 -->
+    {{block 'script'}}{{/block}}
+  </body>
+</html>

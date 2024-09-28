@@ -1,11 +1,13 @@
-// 首页请求
+// 模板引擎
 
 var express = require('express')
 var router = express.Router()
 
 router.get('/', function (req, res, next) {
-  res.render('index.html', {
-    title: '我是首页标题'
+  res.render('tmp.html', {
+    name: 'jack',
+    age: 18,
+    hobby: 'girl'
   })
 })
 

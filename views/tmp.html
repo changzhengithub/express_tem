@@ -1,36 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>模板引擎</title>
-    <link rel="stylesheet" href="/public/css/reset.css" />
-    <link rel="stylesheet" href="/public/css/header.css" />
-    <link rel="stylesheet" href="/public/css/footer.css" />
-    <link rel="stylesheet" href="/public/css/tmp.css" />
-    <script src="/public/lib/js/jquery.js"></script>
-  </head>
-  <body>
-    <div class="index">
-      <div id="header"></div>
+<!-- 模板继承 -->
+{{extend './_layouts/home.html'}}
 
-      <div class="index-container">
-        <div class="container-wrap">
-          <p>大家好，我叫{{name}}</p>
-          <p>我今年{{age}}岁</p>
-          <p>我喜欢{{hobby}}</p>
-        </div>
-      </div>
+<!-- 标题 -->
+{{block 'title'}}
+  {{'模板引擎'}}
+{{/block}}
 
-      <div id="footer"></div>
-    </div>
+<!-- 头部插槽 -->
+{{block 'head'}}
+  <link rel="stylesheet" href="/public/css/index.css" />
+{{/block}}
 
-    <script>
-      // 引入公共文件
-      $(document).ready(function () {
-        $('#header').load('/views/common/header.html')
-        $('#footer').load('/views/common/footer.html')
-      })
-    </script>
-  </body>
-</html>
+<!-- 内容插槽 -->
+{{block 'container'}}
+  <div class="index-container">
+    <div class="container-wrap">
+      <p>大家好，我叫{{name}}</p>
+      <p>我今年{{age}}岁</p>
+      <p>我喜欢{{hobby}}</p>
+  </div>
+</div>
+{{/block}}
+
+<!-- js插槽 -->
+{{block 'script'}}
+
+{{/block}}
