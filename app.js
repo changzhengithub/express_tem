@@ -6,7 +6,7 @@ var app = express()
 
 // 页面路由
 var indexRouter = require('./routes/index')
-var usersRouter = require('./routes/users')
+var commentRouter = require('./routes/comment')
 var tepRouter = require('./routes/tep')
 
 
@@ -25,7 +25,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 // 路由
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/comment', commentRouter)
 app.use('/tmp', tepRouter)
 
 // 错误处理，上面所有use方法都无法调用时，跳转到404页面
