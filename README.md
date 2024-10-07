@@ -16,6 +16,8 @@ npm run start
 
 ## 部署
 ```
-把项目传到服务器，然后执行启动命令 npm run dev
-也可以在服务器使用pm2启动node程序
+1、把项目传到服务器对应目录
+2、执行命令 npm i
+3、启动mongodb服务 sudo systemctl start mongod
+4、启动服务 pm2 start npm --name express -- run start / pm2 app.js
 ```
