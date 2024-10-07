@@ -6,10 +6,7 @@ var router = express.Router()
 // 引入留言表
 var CommentModel = require('../models/comment')
 
-console.log(CommentModel)
-
 router.get('/', function (req, res, next) {
-  
   // 从数据库中查找数据
   CommentModel.find().then(function(data, err) {
     if (err) {

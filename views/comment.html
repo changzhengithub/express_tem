@@ -18,7 +18,7 @@
       <div class="page-header">
         <h1 class="text-primary"><a href="/">首页</a> <small>发表留言</small></h1>
       </div>
-      <form action="/comment/comments" method="POST">
+      <form id="comment">
         <div class="form-group">
           <label for="nickname">你的名字</label>
           <input type="input" name="nickname" class="form-control" id="nickname" required minlength="2" maxlength="10" placeholder="name" />
@@ -35,20 +35,24 @@
 
 <!-- js插槽 -->
 {{block 'script'}}
-<!-- <script>
+<script>
+  // 添加留言
   $('#comment').on('submit', function (e) {
     e.preventDefault()
     var formData = $(this).serialize()
     console.log(formData)
     $.ajax({
-      url: '/post/add',
+      url: '/comment/comments',
       type: 'post',
       data: formData,
       dataType: 'json',
       success: function (data) {
         console.log(data)
+        if (data.code !== 0) {
+          window.location.href = '/'
+        }
       }
     })
   })
-</script> -->
+</script>
 {{/block}}

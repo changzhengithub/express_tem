@@ -1,13 +1,13 @@
 // 设计留言表
 
-// 连接数据库，设计表结构，发布模型
+// 连接数据库，设计表结构，发布模型，在此之前需先安装并启动mongodb服务
 
 // 引入mongoose
 var mongoose = require('mongoose')
 
-// 连接数据库，post数据库不需要存在，当插入第一条时会自动创建
-// mongoose.connect('mongodb://localhost/post')
-mongoose.connect('mongodb+srv://xingchen:密码@mongotest.3kbmj.mongodb.net/?retryWrites=true&w=majority&appName=mongotest')
+// 连接数据库，comment数据库不需要存在，当插入第一条时会自动创建
+mongoose.connect('mongodb://localhost/comment')
+// mongoose.connect('mongodb+srv://xingchen:密码@mongotest.3kbmj.mongodb.net/?retryWrites=true&w=majority&appName=mongotest')
 
 // 监听连接
 const db = mongoose.connection
@@ -20,11 +20,8 @@ db.on('open', function (error) {
   console.log('数据库连接成功')
 })
 
-
-var Schema = mongoose.Schema
-
 // 设计留言表结构
-var commentSchema = new Schema({
+var commentSchema = new mongoose.Schema({
   nickname: {
     type: String,
     required: true

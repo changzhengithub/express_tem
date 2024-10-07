@@ -28,14 +28,9 @@
   font-weight: bold;
 }
 
-.index-container .container-wrap .wrap-group {
+.index-container .container-wrap .wrap-comment {
   width: 100%;
   margin-bottom: 30px;
-}
-
-.index-container .container-wrap .wrap-group .list-group-item {
-  width: 100%;
-  height: 50px;
 }
 
 .index-container .container-wrap .wrap-empty {

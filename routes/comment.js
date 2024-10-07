@@ -16,7 +16,31 @@ router.post('/comments', function(req, res) {
     if (err) {
       return res.render('Not Found File')
     }
-    res.redirect('/')
+    // res.redirect('/')
+    // res.send(data)
+    // 返回给页面，让页面自己处理结果
+    res.status(200).json({
+      code: 200,
+      message: '请求成功',
+      data
+    })
+  })
+})
+
+// 删除留言
+router.post('/delComment', function(req, res) {
+  var nickname = req.body.nickname
+  CommentModel.deleteOne({
+    nickname
+  }).then(function(data, err) {
+    if (err) {
+      return res.render('Not Found File')
+    }
+    res.status(200).json({
+      code: 200,
+      message: '删除成功',
+      data
+    })
   })
 })
 

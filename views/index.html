@@ -21,11 +21,32 @@
       </div>
 
       {{if comments}}
-      <ul class="wrap-group">
-        {{each comments}}
-        <li class="list-group-item">{{$value.nickname}}说：{{$value.comment}}  <span class="pull-right">{{$value.created_time}}</span></li>
-        {{/each}}
-      </ul>
+      <div class="wrap-comment">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>姓名</th>
+              <th>留言内容</th>
+              <th>时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{each comments}}
+              <tr>
+                <td width="100px">{{$index + 1}}</td>
+                <td width="200px">{{$value.nickname}}</td>
+                <td >{{$value.comment}}</td>
+                <td width="160px">{{$value.created_time}}</td>
+                <td width="70px">
+                  <button type="submit" class="btn btn-default" onclick="deleteComment('{{$value.nickname}}')">删除</button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
       {{else}}
       <div class="wrap-empty">
         <span>暂无数据</span>
@@ -38,15 +59,20 @@
 <!-- js插槽 -->
 {{block 'script'}}
   <script>
-    function getCommentList() {
+    // 删除留言
+    function deleteComment(name) {
       $.ajax({
-        url: '/comments',
-        type: 'get',
+        url: '/comment/delComment',
+        type: 'post',
+        data: { nickname: name },
+        dataType: 'json',
         success: function (data) {
           console.log(data)
+          if (data.code !== 0) {
+            window.location.href = '/'
+          }
         }
       })
     }
-    getCommentList()
   </script>
 {{/block}}
